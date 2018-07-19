@@ -6,7 +6,7 @@ def run_tests(platform, browser, version, junit_dir)
   end
 end
 
-task :default => [:test_browsers]
+task :default => [:test_quality]
 
 
 =begin
@@ -41,7 +41,10 @@ task :os_x_safari do
 end
 =end
 
-
+#WINDOWS_EDGE
+task :windows_10_edge_17 do
+  run_tests('Windows 10', 'edge', '17', 'junit_reports/windows_10_edge_17')
+end
 
 task :windows_10_edge_16 do
   run_tests('Windows 10', 'edge', '16', 'junit_reports/windows_10_edge_16')
@@ -64,39 +67,79 @@ end
 # end
 
 task :windows_8_edge_10 do
-  run_tests('Windows 8', 'internet_explorer', '10.0', 'junit_reports/windows_8_ie_10')
+  run_tests('Windows 8', 'edge', '10.0', 'junit_reports/windows_8_edge_10')
 end
 
 task :windows_7_edge_11 do
-  run_tests('Windows 7', 'internet_explorer', '11.0', 'junit_reports/windows_7_ie_11')
+  run_tests('Windows 7', 'edge', '11.0', 'junit_reports/windows_7_edge_11')
 end
 
 task :windows_7_edge_10 do
-  run_tests('Windows 7', 'internet_explorer', '10.0', 'junit_reports/windows_7_ie_10')
+  run_tests('Windows 7', 'edge', '10.0', 'junit_reports/windows_7_edge_10')
 end
 
 task :windows_7_edge_9 do
-  run_tests('Windows 7', 'internet_explorer', '9.0', 'junit_reports/windows_7_ie_9')
+  run_tests('Windows 7', 'edge', '9.0', 'junit_reports/windows_7_edge_9')
 end
 
 task :windows_7_edge_8 do
-  run_tests('Windows 7', 'internet_explorer', '8.0', 'junit_reports/windows_7_ie_8')
+  run_tests('Windows 7', 'edge', '8.0', 'junit_reports/windows_7_edge_8')
 end
 
+#WINDOWS_IE
+task :windows_7_ie_11 do
+  run_tests('Windows 7', 'internet_explorer', '11.0', 'junit_reports/windows_7_ie_11')
+end
 
+task :windows_7_ie_10 do
+  run_tests('Windows 7', 'internet_explorer', '10.0', 'junit_reports/windows_7_ie_10')
+end
 
+#WINDOWS_FIREFOX
+task :windows_10_firefox_61 do
+  run_tests('Windows 10', 'firefox', '61.0', 'junit_reports/windows_10_firefox_61')
+end
 
+task :windows_10_firefox_60 do
+  run_tests('Windows 10', 'firefox', '60.0', 'junit_reports/windows_10_firefox_60')
+end
+
+task :windows_10_firefox_59 do
+  run_tests('Windows 10', 'firefox', '59.0', 'junit_reports/windows_10_firefox_59')
+end
+
+#WINDOWS_CHROME
+task :windows_10_chrome_67 do
+  run_tests('Windows 10', 'chrome', '67.0', 'junit_reports/windows_10_chrome_67')
+end
+
+task :windows_10_chrome_66 do
+  run_tests('Windows 10', 'chrome', '66.0', 'junit_reports/windows_10_chrome_66')
+end
+
+task :windows_10_chrome_65 do
+  run_tests('Windows 10', 'chrome', '65.0', 'junit_reports/windows_10_chrome_65')
+end
+
+#MAC_SAFARI
 task :os_x_10_13_safari_11 do
   run_tests('OS X 10.13', 'safari', '11.0', 'junit_reports/os_x_10_13_safari_11')
+end
+
+task :os_x_10_13_safari_10 do
+  run_tests('OS X 10.13', 'safari', '10.0', 'junit_reports/os_x_10_13_safari_10')
 end
 
 task :os_x_10_12_safari_11 do
   run_tests('OS X 10.12', 'safari', '11.0', 'junit_reports/os_x_10_12_safari_11')
 end
 
-
 task :os_x_10_12_safari_10 do
   run_tests('OS X 10.12', 'safari', '10.0', 'junit_reports/os_x_10_12_safari_10')
+end
+
+task :os_x_10_12_safari_9 do
+  run_tests('OS X 10.12', 'safari', '9.0', 'junit_reports/os_x_10_12_safari_9')
 end
 
 task :os_x_10_11_safari_10 do
@@ -115,8 +158,12 @@ task :os_x_10_9_safari_7 do
   run_tests('OS X 10.9', 'safari', '7.0', 'junit_reports/os_x_10_9_safari_7')
 end
 
-task :windows_10_firefox_49 do
-  run_tests('Windows 10', 'firefox', '49.0', 'junit_reports/windows_10_firefox_49')
+task :os_x_10_13_firefox_61 do
+  run_tests('OS X 10.13', 'firefox', '61.0', 'junit_reports/os_x_10_13_firefox_61')
+end
+
+task :os_x_10_13_firefox_60 do
+  run_tests('OS X 10.13', 'firefox', '60.0', 'junit_reports/os_x_10_13_firefox_60')
 end
 
 task :os_x_10_13_firefox_59 do
@@ -131,12 +178,12 @@ task :os_x_10_13_firefox_57 do
   run_tests('OS X 10.13', 'firefox', '57.0', 'junit_reports/os_x_10_13_firefox_57')
 end
 
-task :windows_7_ie_11 do
-  run_tests('Windows 7', 'internet_explorer', '11.0', 'junit_reports/windows_7_ie_11')
-end
-
 task :os_x_10_10_chrome_54 do
   run_tests('OS X 10.10', 'chrome', '54.0', 'junit_reports/os_x_10_10_chrome_54')
+end
+
+task :os_x_10_13_chrome_67 do
+  run_tests('OS X 10.13', 'chrome', '67.0', 'junit_reports/os_x_10_13_chrome_67')
 end
 
 task :os_x_10_13_chrome_66 do
@@ -156,58 +203,37 @@ task :os_x_10_13_chrome_63 do
 end
 
 
-multitask :test_browsers => [
 
-=begin
-    :windows_10_edge,
-    :windows_8_edge,
-    :windows_7_edge,
-    :os_x_safari
-=end
+multitask :test_quality => [
 
-    :os_x_10_13_safari_11,
-    :os_x_10_12_safari_11,
-    #:os_x_10_12_safari_10,
-    :os_x_10_11_safari_10,
-    :os_x_10_11_safari_9,
-    :os_x_10_10_safari_8,
-    :os_x_10_9_safari_7,
-
-
-
+    #WINDOWS
+    #Edge
+    :windows_10_edge_17,
     :windows_10_edge_16,
-    :windows_10_edge_15,
-    :windows_10_edge_14,
-    :windows_10_edge_13,
+    # :windows_10_edge_15,
+    # :windows_10_edge_14,
+    #IE
+    #:windows_7_ie_11,
+    #:windows_7_ie_10
 
-    #:windows_81_ie_11,
-    #:windows_8_ie_10,
-    :windows_7_ie_11,
-    #:windows_7_ie_10,
-    #:windows_7_ie_9,
-    #:windows_7_ie_8,
-
+    #MAC
+    #Safari
+    #:os_x_10_13_safari_11,
+    #:os_x_10_13_safari_10,
+    :os_x_10_12_safari_11,
+   # :os_x_10_12_safari_10,
+    # :os_x_10_12_safari_10,
+    # :os_x_10_12_safari_9,
+    #Chrome
+    #:os_x_10_13_chrome_67,
     :os_x_10_13_chrome_66,
-    :os_x_10_13_chrome_65,
-    :os_x_10_13_chrome_64,
-    :os_x_10_13_chrome_63,
-    #
-    :os_x_10_13_firefox_59,
-    :os_x_10_13_firefox_58,
-    :os_x_10_13_firefox_57
-
-
-    # :windows_10_firefox_49,
-    # :windows_7_ie_11,
-    # :os_x_10_10_chrome_54
-
-=begin
-    :windows_10_edge_14,
-    :windows_10_firefox_49,
-    :windows_7_ie_11,
-    :os_x_10_11_safari_10,
-    :os_x_10_10_chrome_54
-=end
+    # :os_x_10_13_chrome_65,
+    # :os_x_10_13_chrome_64,
+    #Firefox
+    #:os_x_10_13_firefox_61,
+    :os_x_10_13_firefox_60
+    # :os_x_10_13_firefox_59,
+    # :os_x_10_13_firefox_58
   ] do
     raise StandardError, "Tests failed!" unless @success
   end

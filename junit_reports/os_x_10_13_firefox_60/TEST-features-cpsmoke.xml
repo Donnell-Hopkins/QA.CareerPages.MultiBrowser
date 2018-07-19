@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite failures="0" errors="0" skipped="0" tests="1" time="33.638258" name="Career Pages - Display Validation">
+<testcase classname="Career Pages - Display Validation" name="Standard Career Pages Display - Page Validation" time="33.638258">
+  <system-out>
+    <![CDATA[2018-07-19 12:49:50 WARN Selenium [DEPRECATION] :timeout= is deprecated. Use #read_timeout= and #open_timeout= instead.
+]]>
+  </system-out>
+  <system-err>
+    <![CDATA[]]>
+  </system-err>
+</testcase>
+</testsuite>

@@ -1,6 +1,7 @@
 begin require 'rspec/expectations'; rescue LoadError; require 'spec/expectations'; end
 require 'selenium-webdriver'
 require 'sauce_whisk'
+require_relative '../page_objects/home_page'
 require_relative '../page_objects/cp_zinburger'
 
 Before do | scenario |
@@ -16,10 +17,12 @@ Before do | scenario |
 
   url = "https://#{ENV['SAUCE_USERNAME']}:#{ENV['SAUCE_ACCESS_KEY']}@ondemand.saucelabs.com:443/wd/hub".strip
 
+
   client = Selenium::WebDriver::Remote::Http::Default.new
   client.timeout = 180
 
   @browser = Selenium::WebDriver.for(:remote, :url => url, :desired_capabilities => capabilities, :http_client => client)
+
 end
 
 # "after all"

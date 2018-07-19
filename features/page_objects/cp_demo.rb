@@ -1,4 +1,4 @@
-class ZinburgerPage
+class DemoPage
   def initialize(browser)
     @browser = browser
     end
@@ -79,7 +79,7 @@ class ZinburgerPage
   end
 
   def search_section
-    @browser.find_element(id: 'search-results-header')
+    @browser.find_element(tag_name: 'jobs-search')
   end
 
   def job_but
@@ -101,6 +101,10 @@ class ZinburgerPage
   def pagination
     #@browser.find_element(tag_name: 'pagination-controls')
     @browser.find_element(tag_name: 'pagination-template')
+  end
+
+  def footer
+    @browser.find_element(tag_name: 'footer')
   end
 
 

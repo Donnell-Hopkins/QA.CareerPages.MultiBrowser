@@ -38,7 +38,7 @@ QA.CareerPages is a Multiple Browser Ruby-Cucumber-Selenium automated testing fr
 
 * Tests in Parallel:
 	```
-	$ rake test_browsers
+	$ rake test_quality
 	```
 
 [Sauce Labs Dashboard](https://saucelabs.com/beta/dashboard/)
